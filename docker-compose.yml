@@ -4,13 +4,12 @@ services:
     container_name: next-app
     build:
       context: .
-      target: $DOCKER_NODE_ENV
+      target: dev
     restart: always
-    # command: tail -f /dev/null
     env_file: .env
-    # volumes:
-    # - .:/app
-    # - /app/node_modules
-    # - /app/.next
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
     ports:
       - $SERVER_PORT:$SERVER_PORT
